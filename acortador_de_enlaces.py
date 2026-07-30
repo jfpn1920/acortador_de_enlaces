@@ -6,18 +6,15 @@ enlaces = {}
 #----------------------------------------#
 def menu_principal():
     while True:
-        print("\n========================================")
-        print("         ACORTADOR DE ENLACES")
-        print("========================================")
-        print("1. Acortar enlace")
-        print("2. Listar enlaces")
-        print("3. Buscar enlace")
-        print("4. Abrir enlace")
-        print("5. Eliminar enlace")
-        print("6. Mostrar estadísticas")
-        print("7. Salir")
-        print("========================================")
-        opcion = input("Seleccione una opción: ").strip()
+        print("menu pricipal acortador de enlaces")
+        print("1) acortar enlace")
+        print("2) listar enlaces")
+        print("3) buscar enlace")
+        print("4) abrir enlace")
+        print("5) eliminar enlace")
+        print("6) mostrar estadísticas")
+        print("7) salir")
+        opcion = input("seleccione una opción: ").strip()
         if opcion == "1":
             acortar_enlace()
         elif opcion == "2":
@@ -33,7 +30,7 @@ def menu_principal():
         elif opcion == "7":
             salir()
         else:
-            print("\nOpción inválida. Intente nuevamente.")
+            print("opción inválida, intente nuevamente.")
 #--------------------------#
 #--|generar_codigo_corto|--#
 #--------------------------#
@@ -49,113 +46,98 @@ def generar_codigo():
 #--|acortar_enlace|--#
 #--------------------#
 def acortar_enlace():
-    print("\n================================")
-    print("       ACORTAR ENLACE")
-    print("================================")
-    url = input("Ingrese la URL que desea acortar: ").strip()
+    print("acortar enlace")
+    url = input("ingrese la url que desea acortar: ").strip()
     if url == "":
-        print("\nLa URL no puede estar vacía.")
+        print("la url no puede estar vacía.")
         return
     codigo = generar_codigo()
     enlaces[codigo] = url
-    print("\nEnlace acortado correctamente.")
-    print("URL original:", url)
-    print("URL corta: https://acortador.local/" + codigo)
+    print("enlace acortado correctamente.")
+    print("url original:", url)
+    print("url corta: https://acortador.local/" + codigo)
 #--------------------#
 #--|listar_enlaces|--#
 #--------------------#
 def listar_enlaces():
-    print("\n================================")
-    print("       LISTA DE ENLACES")
-    print("================================")
+    print("listar enlaces")
     if len(enlaces) == 0:
-        print("No hay enlaces registrados.")
+        print("no hay enlaces registrados.")
         return
     contador = 1
     for codigo, url in enlaces.items():
-        print("\nEnlace", contador)
-        print("Código:", codigo)
-        print("URL corta: https://acortador.local/" + codigo)
-        print("URL original:", url)
+        print("enlace", contador)
+        print("código:", codigo)
+        print("url corta: https://acortador.local/" + codigo)
+        print("url original:", url)
         contador += 1
 #-------------------#
 #--|buscar_enlace|--#
 #-------------------#
 def buscar_enlace():
-    print("\n================================")
-    print("        BUSCAR ENLACE")
-    print("================================")
+    print("buscar enlace")
     if len(enlaces) == 0:
-        print("No hay enlaces registrados.")
+        print("no hay enlaces registrados.")
         return
-    codigo = input("Ingrese el código del enlace: ").strip()
+    codigo = input("ingrese el código del enlace: ").strip()
     if codigo in enlaces:
-        print("\nEnlace encontrado.")
-        print("Código:", codigo)
-        print("URL corta: https://acortador.local/" + codigo)
-        print("URL original:", enlaces[codigo])
+        print("enlace encontrado.")
+        print("código:", codigo)
+        print("url corta: https://acortador.local/" + codigo)
+        print("url original:", enlaces[codigo])
     else:
-        print("\nNo se encontró ningún enlace con ese código.")
+        print("no se encontró ningún enlace con ese código.")
 #------------------#
 #--|abrir_enlace|--#
 #------------------#
 def abrir_enlace():
-    print("\n================================")
-    print("         ABRIR ENLACE")
-    print("================================")
+    print("abrir enlace")
     if len(enlaces) == 0:
-        print("No hay enlaces registrados.")
+        print("no hay enlaces registrados.")
         return
-    codigo = input("Ingrese el código del enlace: ").strip()
+    codigo = input("ingrese el código del enlace: ").strip()
     if codigo in enlaces:
-        print("\nRedireccionando...")
-        print("URL original:")
+        print("redireccionando...")
+        print("url original:")
         print(enlaces[codigo])
     else:
-        print("\nEl enlace no existe.")
+        print("el enlace no existe.")
 #---------------------#
 #--|eliminar_enlace|--#
 #---------------------#
 def eliminar_enlace():
-    print("\n================================")
-    print("        ELIMINAR ENLACE")
-    print("================================")
+    print("eliminar enlace")
     if len(enlaces) == 0:
-        print("No hay enlaces registrados.")
+        print("no hay enlaces registrados.")
         return
-    codigo = input("Ingrese el código del enlace: ").strip()
+    codigo = input("ingrese el código del enlace: ").strip()
     if codigo in enlaces:
-        print("\nEnlace encontrado.")
-        print("URL:", enlaces[codigo])
-        confirmar = input("¿Desea eliminarlo? (s/n): ").lower()
+        print("enlace encontrado.")
+        print("url:", enlaces[codigo])
+        confirmar = input("¿desea eliminarlo? (s/n): ").lower()
         if confirmar == "s":
             del enlaces[codigo]
-            print("\nEnlace eliminado correctamente.")
+            print("enlace eliminado correctamente.")
         else:
-            print("\nOperación cancelada.")
+            print("operación cancelada.")
     else:
-        print("\nNo se encontró ningún enlace con ese código.")
+        print("no se encontró ningún enlace con ese código.")
 #--------------------------#
 #--|mostrar_estadísticas|--#
 #--------------------------#
 def mostrar_estadisticas():
-    print("\n================================")
-    print("          ESTADÍSTICAS")
-    print("================================")
+    print("mostrar estadísticas")
     total = len(enlaces)
-    print("Total de enlaces registrados:", total)
+    print("total de enlaces registrados:", total)
     if total == 0:
-        print("No hay enlaces para mostrar.")
+        print("no hay enlaces para mostrar.")
     else:
-        print("El acortador tiene", total, "enlace(s) almacenado(s).")
+        print("el acortador tiene", total, "enlace(s) almacenado(s).")
 #------------------------------#
 #--|salir_del_menu_principal|--#
 #------------------------------#
 def salir():
-    print("\n================================")
-    print("       SALIR DEL PROGRAMA")
-    print("================================")
-    print("Gracias por utilizar el")
-    print("Acortador de Enlaces.")
+    print("salir del menu principal")
+    print("gracias por utilizar el acortador de Enlaces.")
     return False
 menu_principal()
